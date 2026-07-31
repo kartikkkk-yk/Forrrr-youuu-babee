@@ -446,6 +446,16 @@ function startHearts(){
 }
 
 </script>
+<audio id="bgMusic" loop>
+  <source src="tumhotoh.mp3" type="audio/mpeg">
+</audio>
 
+<script>
+document.addEventListener('click', () => {
+  const m = document.getElementById('bgMusic');
+  m.volume = 0.22;
+  m.play().catch(() => {});
+}, { once:true });
+</script>
 </body>
 </html>
