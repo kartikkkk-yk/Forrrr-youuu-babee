@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vanshuuu ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ff5f8f,#12060b,#000);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  overflow:hidden;
+  color:white;
+}
+
+.card{
+  width:100%;
+  max-width:420px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(15px);
+  border-radius:28px;
+  padding:28px;
+  text-align:center;
+  box-shadow:0 10px 40px rgba(255,79,123,.35);
+  animation:fade .8s ease;
+}
+
+.hidden{display:none;}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px) scale(.95);}
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+
+.cat{
+  width:110px;
+  animation:float 2.5s ease-in-out infinite;
+  filter:drop-shadow(0 0 15px rgba(255,255,255,.5));
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+
+@keyframes shake{
+  0%{transform:translateX(0);}
+  20%{transform:translateX(-8px);}
+  40%{transform:translateX(8px);}
+  60%{transform:translateX(-6px);}
+  80%{transform:translateX(6px);}
+  100%{transform:translateX(0);}
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:16px;
+  text-align:center;
+  font-size:16px;
+  margin-top:15px;
+  outline:none;
+  background:white;
+  color:#222;
+}
+
+input:focus{
+  box-shadow:0 0 15px rgba(255,105,180,.45);
+}
+
+button{
+  width:100%;
+  padding:13px;
+  margin-top:15px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(135deg,#ff4f7b,#ff7aa2);
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+#yesBtn{
+  transition:transform .25s ease;
+}
+
+.yesno{
+  display:flex;
+  gap:12px;
+  margin-top:20px;
+}
+
+#noBtn{
+  background:#444;
+}
+
+.envelope{
+  font-size:90px;
+  animation:bounce 2s infinite;
+  cursor:pointer;
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
+}
+
+.flower-card{
+  background:rgba(255,255,255,0.08);
+  border-radius:20px;
+  padding:16px;
+  margin-top:15px;
+}
+
+.flower{
+  font-size:34px;
+  margin-bottom:8px;
+}
+
+.message{
+  text-align:left;
+  line-height:1.9;
+  max-height:55vh;
+  overflow:auto;
+}
+
+.highlight{
+  color:#ffd6e3;
+  font-weight:bold;
+}
+
+.heart{
+  position:fixed;
+  top:-20px;
+  font-size:22px;
+  pointer-events:none;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD PAGE -->
+<div class="card" id="loginPage">
+
+  <img id="cat" class="cat"
+  src="https://cdn-icons-png.flaticon.com/512/616/616430.png">
+
+  <h2>Vanshuuu 😚</h2>
+
+  <p style="color:#ffd6e3;line-height:1.6;">
+    <b>This is a surprise for you, my Vanshuuu 😋💖</b>
+  </p>
+
+  <input type="password" id="password"
+  placeholder="Enter Secret Password 🔐">
+
+  <button onclick="checkPassword()">
+    Enter Password 💖
+  </button>
+
+  <p id="errorText"
+  style="color:#ffd6e3;margin-top:10px;font-size:14px;"></p>
+
+</div>
+
+<!-- YES NO PAGE -->
+<div class="card hidden" id="questionPage">
+
+  <img class="cat"
+  src="https://cdn-icons-png.flaticon.com/512/616/616430.png">
+
+  <h2>🥺 One Cute Question</h2>
+
+  <p style="color:#ffd6e3;line-height:1.7;">
+    Will you keep being my cute little Vanshu forever? 💖😚
+  </p>
+
+  <div class="yesno">
+
+    <button id="yesBtn" onclick="showEnvelope()">
+      YES 💖
+    </button>
+
+    <button id="noBtn" onclick="moveNo()">
+      NO 😭
+    </button>
+
+  </div>
+
+</div>
+
+<!-- ENVELOPE PAGE -->
+<div class="card hidden" id="envelopePage">
+
+  <div class="envelope" onclick="openEnvelope()">💌</div>
+
+  <h2>Open This 💖</h2>
+
+  <p style="color:#ffd6e3;margin-top:12px;">
+    A tiny flirty surprise made by your
+    <b>mera dil 🐷💕</b>
+  </p>
+
+</div>
+
+<!-- FLOWERS PAGE -->
+<div class="card hidden" id="flowersPage">
+
+  <h2>🌸 Three Little Flowers For Vanshu 🌸</h2>
+
+  <div class="flower-card">
+    <div class="flower">🌸</div>
+    <p>
+      Vanshuuu 😚💕
+      Tu meri favourite smile hai,
+      aur tera naam dekhte hi automatically smile aa jati hai 💖
+    </p>
+  </div>
+
+  <div class="flower-card">
+    <div class="flower">🌷</div>
+    <p>
+      Agar cuteness ko kisi insaan ka naam dena hota,
+      toh woh definitely <b>Vanshika</b> hota 🥺✨
+    </p>
+  </div>
+
+  <div class="flower-card">
+    <div class="flower">🌹</div>
+    <p>
+      <b>Mera dil permanently Vanshu ke naam registered ho chuka hai ❤️😝</b>
+    </p>
+  </div>
+
+  <button onclick="showFinalPage()">
+    Open My Heart 💖
+  </button>
+
+</div>
+
+<!-- FINAL PAGE -->
+<div class="card hidden" id="finalPage">
+
+  <img class="cat"
+  src="https://cdn-icons-png.flaticon.com/512/616/616430.png">
+
+  <h2>Happy Girlfriend Day Babe 😚</h2>
+
+  <p style="color:#ffd6e3;margin-bottom:14px;">
+    For <b>Vanshika (Vanshu) ❤️</b>
+  </p>
+
+  <div class="message">
+
+    <p><b>Happy Girlfriend Day, my Vanshuuu ❤️😚</b></p>
+
+    <p>
+      Maine <span class="highlight">8th class se hi tumse pyaar kiya tha</span> 💖🥺
+      aur ab <span class="highlight">finaalllyyyyyyy you are mine 😭💕</span>
+    </p>
+
+    <p>
+      Yaad hai ek baar humara <span class="highlight">science project PTM ke liye chal raha tha</span> 😭✨
+      main Yuvraj ko kick maar raha tha aur <span class="highlight">khud hi gir gaya tha 🥲😂</span>
+    </p>
+
+    <p>
+      Us din <span class="highlight">teri hasi kitni pyari lag rahi thi yrrrr 😭💕</span>
+    </p>
+
+    <p>
+      Bas ab <span class="highlight">hamesha saath rahein 🌙✨</span>
+    </p>
+
+    <p>
+      Teri hasi, tera care karna, tera mujhe samajhna…
+      sab kuch bohot precious hai 💖
+    </p>
+
+    <p>
+      Kabhi kabhi itni badmash banti hai 😤😝
+      ki kisi din sach me utha ke patak dunga 😂💕
+    </p>
+
+    <p>
+      Tu meri <span class="highlight">favourite notification 😚📱💌</span> hai
+    </p>
+
+    <p>
+      <span class="highlight">I LOVE YOUUUU YOUUU SOOO MUCHHH ❤️😚</span>
+    </p>
+
+    <p>
+      Ummm… ye meri taraf se <span class="highlight">choti si website</span> hai 💌😭
+      online me zyada kuch kar nahi sakta,
+      but <span class="highlight">meri life me itni khushiyan lane ke liye bohot bohot thanksss apka 😚🌸💖</span>
+    </p>
+
+    <p style="text-align:center;margin-top:22px;font-size:18px;">
+      ✨ <b>From your cute mera dil (suar/cutlet) 🐷💕</b> ✨
+    </p>
+
+  </div>
+
+</div>
+
+<script>
+
+function checkPassword(){
+
+  const pass = document.getElementById("password");
+  const error = document.getElementById("errorText");
+  const card = document.getElementById("loginPage");
+
+  if(pass.value === "1720"){
+
+    document.getElementById("loginPage")
+      .classList.add("hidden");
+
+    document.getElementById("questionPage")
+      .classList.remove("hidden");
+
+    startHearts();
+
+  }else{
+
+    error.innerHTML =
+      "😾 Wrong password Vanshu! Try again 💢";
+
+    pass.value = "";
+
+    if(navigator.vibrate){
+      navigator.vibrate([200,100,200]);
+    }
+
+    card.style.animation = "none";
+    void card.offsetWidth;
+    card.style.animation = "shake .45s ease";
+
+    setTimeout(()=>{
+      error.innerHTML = "";
+    },2000);
+  }
+}
+
+const noTexts = [
+  "Are you sure? 🥺",
+  "Reallyyy? 😭",
+  "Think again 😚",
+  "Last chance 💖"
+];
+
+let noIndex = 0;
+let yesScale = 1;
+
+function moveNo(){
+
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+
+  noBtn.innerHTML =
+    noTexts[noIndex % noTexts.length];
+
+  noIndex++;
+
+  yesScale += 0.08;
+
+  yesBtn.style.transform =
+    `scale(${yesScale})`;
+}
+
+function showEnvelope(){
+
+  document.getElementById("questionPage")
+    .classList.add("hidden");
+
+  document.getElementById("envelopePage")
+    .classList.remove("hidden");
+}
+
+function openEnvelope(){
+
+  document.getElementById("envelopePage")
+    .classList.add("hidden");
+
+  document.getElementById("flowersPage")
+    .classList.remove("hidden");
+}
+
+function showFinalPage(){
+
+  document.getElementById("flowersPage")
+    .classList.add("hidden");
+
+  document.getElementById("finalPage")
+    .classList.remove("hidden");
+
+  startHearts();
+}
+
+function startHearts(){
+
+  const emojis =
+    ["💖","💕","❤️","🌸","✨","💗"];
+
+  setInterval(()=>{
+
+    const heart =
+      document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML =
+      emojis[Math.floor(Math.random()*emojis.length)];
+
+    heart.style.left =
+      Math.random()*100 + "vw";
+
+    heart.style.animationDuration =
+      (3 + Math.random()*3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>heart.remove(),6000);
+
+  },220);
+}
+
+</script>
+
+</body>
+</html>
